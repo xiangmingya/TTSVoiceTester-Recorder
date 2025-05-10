@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>多语言TTS文本朗读与录音下载</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+</head>
+<body>
+    <h2>多语言TTS文本朗读与录音下载</h2>
+    <textarea id="text" placeholder="请输入要朗读的中文文字...">这是一个中文语音测试演示，欢迎使用本工具。</textarea>
+    <div class="button-group">
+        <button id="speakBtn">朗读</button>
+        <button id="stopPlaybackBtn">停止朗读</button>
+        <button id="recordBtn">开始录音</button>
+        <button id="downloadBtn" disabled>停止并下载</button>
+    </div>
+    <div id="status" class="status-info">准备就绪，请稍候...</div>
+    <div class="voice-switch" style="margin-bottom: 10px;">
+        <button id="chineseVoicesBtn" class="active">中文音色</button>
+        <button id="otherVoicesBtn">其他音色</button>
+        <a href="https://tts-pdf.notion.site" target="_blank"><button>使用文档</button></a>
+    </div>
+    <div id="voiceListContainer">
+        <h3>选择音色：</h3>
+        <div id="voicesDisplay" class="voice-list"></div>
+    </div>
+    <!-- 权限弹窗 -->
+    <div id="permissionModal" style="display:none;">
+        <div class="modal-content">
+            <h3 id="modalTitle">需要麦克风权限</h3>
+            <p id="modalMessage">为了录制语音，应用需要访问您的麦克风。请点击"授权"按钮并在浏览器提示中允许访问。</p>
+            <p id="modalDeviceNotFoundMessage" style="display:none;">未检测到麦克风设备。请检查您的麦克风是否已正确连接并被操作系统识别。然后重试。</p>
+            <div class="modal-buttons">
+                <button id="retryPermissionBtn" style="background: #3498db;">授权</button>
+                <button id="closeModalBtn" style="background: #7f8c8d; display:none;">关闭</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/utils.js"></script>
+    <script src="js/permission.js"></script>
+    <script src="js/tts.js"></script>
+    <script src="js/record.js"></script>
+</body>
+</html>
